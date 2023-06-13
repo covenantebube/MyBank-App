@@ -36,7 +36,7 @@ namespace MyBankApp
                 {
                     Console.Clear();
                     Console.WriteLine("register menu");
-               //     CreateCustomerAccount.RegistrationInfo();
+                    CreateCustomerAccount.RegistrationInfo();
                 }
 
 
