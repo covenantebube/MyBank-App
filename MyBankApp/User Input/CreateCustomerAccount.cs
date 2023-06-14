@@ -47,6 +47,7 @@ namespace MyBankApp
                 Console.Write("Password should contain minimum of 6 alphanumeric and special characters! \n Password? ");
                 password = Utility.HidePassword();
             }
+
             string fullname = firstname + " " + lastname;
             CustomerAccount customer = new(fullname, emailaddress, password);
             Console.WriteLine($"Congratulations {fullname}, Your Savings Account has been created");
