@@ -1,4 +1,7 @@
 ﻿
+using MyBankApp.Model;
+using MyBankApp.User_Input;
+
 namespace MyBankApp
 {
     public class CreateCustomerAccount
@@ -45,11 +48,11 @@ namespace MyBankApp
                 password = Utility.HidePassword();
             }
             string fullname = firstname + " " + lastname;
-            
+            CustomerAccount customer = new(fullname, emailaddress, password);
             Console.WriteLine($"Congratulations {fullname}, Your Savings Account has been created");
             Console.ReadLine();
             Console.Clear();
-            
+            TransactionMenu.TransactionOptions(customer);
 
 
         }

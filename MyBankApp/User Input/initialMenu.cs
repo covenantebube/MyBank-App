@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBankApp.User_Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace MyBankApp
                 {
                     Console.Clear();
                     Console.WriteLine("login menu");
-                 //   LogIn.LogInDetails();
+                   LogIn.LogInDetails();
                 }
                 else
                 {
