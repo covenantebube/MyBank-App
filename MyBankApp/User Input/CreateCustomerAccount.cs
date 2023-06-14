@@ -1,4 +1,5 @@
 ﻿
+using MyBankApp.BuisnessServices;
 using MyBankApp.Model;
 using MyBankApp.User_Input;
 
@@ -6,7 +7,11 @@ namespace MyBankApp
 {
     public class CreateCustomerAccount
     {
-       
+        private static ICustomerService _customerService;
+        public static ICustomerService customerService
+        {
+            get => _customerService ??= new CustomerService();
+        }
         public static void RegistrationInfo()
         {
             //Enter your first name
@@ -48,14 +53,25 @@ namespace MyBankApp
                 password = Utility.HidePassword();
             }
 
-            string fullname = firstname + " " + lastname;
-            CustomerAccount customer = new(fullname, emailaddress, password);
-            Console.WriteLine($"Congratulations {fullname}, Your Savings Account has been created");
-            Console.ReadLine();
-            Console.Clear();
-            TransactionMenu.TransactionOptions(customer);
 
+            if (customerService.AccountCheck(emailaddress, password))
+            {
+                Console.WriteLine("Account already exists");
+                Console.ReadLine();
+                Console.Clear();
+                InitialMenuOptions.InitialMenu();
+            }
+            else
+            {
 
+                string fullname = firstname + " " + lastname;
+                CustomerAccount customer = new(fullname, emailaddress, password);
+                Console.WriteLine($"Congratulations {fullname}, Your Savings Account has been created");
+                Console.ReadLine();
+                Console.Clear();
+                TransactionMenu.TransactionOptions(customer);
+
+            }
         }
 
     }
